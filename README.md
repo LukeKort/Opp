@@ -13,4 +13,8 @@ O Opp funciona como uma plataforma de otimização, permitindo o acesso a divers
 
 ## Estrutura
 
-![Imagem1](https://user-images.githubusercontent.com/64225460/117011199-f8efd700-acc3-11eb-9ec3-84381df2a67a.png)
+![estrutura2](https://user-images.githubusercontent.com/64225460/117377375-83ddf680-aea9-11eb-86bb-686d431650fa.png)
+
+
+
+
