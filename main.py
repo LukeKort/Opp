@@ -1,29 +1,41 @@
-# Python code by Lucas Kort (May. 10, 2021)
+# Python code by Lucas Kort (May. 12, 2021)
 # Main
 
 import numpy as np
-from parameters import n_iterations
 from plotter_export_csv import plotter
 from plotter_export_csv import export_csv
 
+#Parameters
 methods=['y','y'] #methods to be processed [Alcateia[y/n],Alcateia2[y/n]]
+n_particles = 100
+a= [-10,-10] #limit inferior per variable (must be a list)
+b= [0, 0] #limit superior per variable (must be a list)
+n_variables = np.size(a) #number of variables = number of constraints
+n_iterations = 50
+pso_only=[0.5,2,2] #[w,c1,c2] - for PSO only
+alcateia_only = [20,0.7] #[internal cicles, idependency] - for alcateia only 
+tolerance = 0
+
+
 n_methods=methods.count('y')
 result_table=np.zeros((n_iterations,n_methods))
 i=0
 methods_name=[]
 
 if methods[0].lower() == 'y':
-    from alcateia import best_result_acum
-    result_table[:,i] = best_result_acum
+    from alcateia import alcateia
+    alcateia_results=alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only) #activate de alcateia method
+    result_table[:,i] = alcateia_results['acumulate_result']
     name='Alcateia'
     methods_name.append('Alcateia')
     i=i+1
 if methods[1].lower() == 'y':
-    from pso import best_result_acum
-    result_table[:,i] = best_result_acum
+    from pso import pso
+    pso_results=pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only) #activate de alcateia method
+    result_table[:,i] = pso_results['acumulate_result']
     name='Particle Swarn'
     methods_name.append('Particle Swarn')
     i=i+1
 
-plotter(result_table,n_methods,methods_name)
-export_csv(result_table,methods_name)
+plotter(n_iterations,result_table,n_methods,methods_name)
+export_csv(result_table,methods_name,n_iterations)
