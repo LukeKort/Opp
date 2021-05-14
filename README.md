@@ -4,7 +4,7 @@ Opp é uma ferramenta de otimização. Uma intuitiva calculadora para otimizaç�
 O Opp funciona como uma plataforma de otimização, permitindo o acesso a diversos métodos de otimização, de forma fácil e intuitiva, até para aqueles que nunca trabalharam com otimização antes.
 
 ## Características
-- Biblioteca de diferentes tipos de métodos (Alcateia, PSO)
+- Biblioteca de diferentes tipos de métodos (Alcateia, PSO, Luus Jaakola)
 - Sequência de passo-a-passo intuitiva
 - Facilidade em exportar resultados, com caixa de diálogo
 - Facilidade em comparar diferentes métodos de otimização, com gráficos de resultados
