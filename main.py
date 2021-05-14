@@ -1,8 +1,11 @@
 # Main (May. 12, 2021)
 
 import numpy as np
+import sys
 from plotter_export_csv import plotter
 from plotter_export_csv import export_csv
+from functions import constraints
+from functions import objective
 
 #Parameters
 methods=['y','y','y'] #methods to be processed [Alcateia[y/n],Alcateia2[y/n]]
@@ -16,6 +19,12 @@ alcateia_only = [20,0.7] #[internal cicles, idependency] - for alcateia only
 lj_only = [500,0.005] #[internal cicles,contraction factor(0,1)] - for alcateia only
 tolerance = 0
 
+try: #check for erros in objective, constraints functions
+    teste_var = np.ones((n_variables,1))
+    constraints(teste_var)
+    objective(teste_var)
+except:
+    sys.exit('Function not correctly inputted\n')
 
 n_methods=methods.count('y')
 result_table=np.zeros((n_iterations,n_methods))
