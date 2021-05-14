@@ -1,5 +1,4 @@
-# Python code by Lucas Kort (May. 12, 2021)
-# Randon matrix generator
+# Randon matrix generator (May. 12, 2021)
 
 import random as rand
 import numpy as np

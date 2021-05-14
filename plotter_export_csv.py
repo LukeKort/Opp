@@ -1,5 +1,4 @@
-# Python code by Lucas Kort (May. 12, 2021)
-# Plotter charts and export to CVS files
+# Plotter charts and export to CVS files (May. 12, 2021)
 
 import matplotlib.pyplot as plt
 import pandas as pd

@@ -1,5 +1,4 @@
-# Python (May. 12, 2021)
-# Particle Swarn
+# Particle Swarm (May. 12, 2021)
 
 import time
 import numpy as np
@@ -42,6 +41,6 @@ def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only):
     t_end = time.time() #finish time
     t_total = t_end - t_0 #total processing time
 
-    print('#Particle Swarn\nThe best result is:',best_result,'\nLocated at:',x_best,'\nProcessing time:',(t_total),'s\n')
+    print('#Particle Swarm\nThe best result is:',best_result,'\nLocated at:',x_best,'\nProcessing time:',(t_total),'s\n')
     
     return({'best_result':best_result,'acumulate_result':best_result_acum,'x_best':x_best,'t_total':t_total})

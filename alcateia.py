@@ -1,5 +1,4 @@
-# Python code by Lucas Kort (May. 12, 2021)
-# Alcateia
+# Alcateia (May. 12, 2021)
 
 import time
 import numpy as np
@@ -39,7 +38,6 @@ def alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only):
         
         if tolerance >= np.amax(r): #break for setting tolerance
             #best_result_acum[:,i:n_iterations]=best_result #comple the rest of the vector with the last value
-            print(i)
             break
 
     t_end = time.time() #finish time
