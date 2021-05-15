@@ -8,7 +8,7 @@ from functions import objective #objetive function(s)
 from functions import constraints #constraint function(s)
 
 def lj(n_variables,n_iterations,tolerance,a,b,lj_only):
-    best_result_acum = np.zeros((n_iterations)) #preallocation
+    best_result_acum = np.empty((n_iterations)) #preallocation
     x_0 = (radom_generator(n_variables,1,a,b)) #postion matrix
     x = r= np.ones((n_variables,1))
 
@@ -38,4 +38,4 @@ def lj(n_variables,n_iterations,tolerance,a,b,lj_only):
 
     print('#Luus Jaakola\nThe best result is:',best_result,'\nLocated at:',x_best,'\nProcessing time:',(t_total),'s\n')
 
-    return({'best_result':best_result,'acumulate_result':best_result_acum,'x_best':x_best,'t_total':t_total})
+    return({'best_result':best_result,'acumulate_result':best_result_acum,'x_best':x_best,'t_total':t_total,'max_n_iteration':i})

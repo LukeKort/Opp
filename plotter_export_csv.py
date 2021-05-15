@@ -5,12 +5,13 @@ import pandas as pd
 from tkinter import filedialog
 from mpl_toolkits.axisartist.axislines import Axes
 
-def plotter(x_limit,y_var,n_methods,name):
+def plotter(x_limit,last_iteration,y_var,n_methods,name):
     
     fig = plt.figure(figsize=(6,4)) #chart size
     
     for i in range(n_methods):
-        plt.scatter(range(x_limit),y_var[:,i],alpha=0.5,label=name[i])
+        iterations_limit = int(last_iteration[i]) #consider early end of method's processing by tolerance
+        plt.scatter(range(iterations_limit),y_var[0:iterations_limit,i],alpha=0.5,label=name[i])
   
     plt.title('Best function value')
     plt.ylabel('Function value')

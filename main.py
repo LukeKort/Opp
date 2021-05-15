@@ -28,6 +28,7 @@ except:
 
 n_methods=methods.count('y')
 result_table=np.zeros((n_iterations,n_methods))
+last_iteration=np.zeros(n_methods) #consider early end of method's processing by tolerance
 i=0
 methods_name=[]
 
@@ -35,23 +36,23 @@ if methods[0].lower() == 'y':
     from alcateia import alcateia
     alcateia_results=alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only) #activate de alcateia method
     result_table[:,i] = alcateia_results['acumulate_result']
-    #name='Alcateia'
+    last_iteration[i] = alcateia_results['max_n_iteration']
     methods_name.append('Alcateia')
     i=i+1
 if methods[1].lower() == 'y':
     from pso import pso
     pso_results=pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only) #activate de alcateia method
     result_table[:,i] = pso_results['acumulate_result']
-    #name='Particle Swarm'
+    last_iteration[i] = pso_results['max_n_iteration']
     methods_name.append('Particle Swarm')
     i=i+1
 if methods[2].lower() == 'y':
     from luus_jaakola import lj
     lj_results=lj(n_variables,n_iterations,tolerance,a,b,lj_only) #activate de alcateia method
     result_table[:,i] = lj_results['acumulate_result']
-    #name='Particle Swarm'
+    last_iteration[i] = lj_results['max_n_iteration']
     methods_name.append('Luus Jaakola')
     i=i+1
 
-plotter(n_iterations,result_table,n_methods,methods_name)
+plotter(n_iterations,last_iteration,result_table,n_methods,methods_name)
 export_csv(result_table,methods_name,n_iterations)

@@ -9,7 +9,7 @@ from functions import constraints #constraint function(s)
 
 def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only):
     results = np.ones((n_particles)) #preallocation
-    best_result_acum = np.zeros((n_iterations)) #preallocation
+    best_result_acum = np.empty((n_iterations)) #preallocation
     x_aux = x = np.zeros((n_variables, n_particles)) #x_aux stores the best value's position per particle/x is the first position matrix
     v = radom_generator(n_variables,n_particles,a,b) #velocity matrix
     x_best = np.zeros((n_variables))
@@ -43,4 +43,4 @@ def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only):
 
     print('#Particle Swarm\nThe best result is:',best_result,'\nLocated at:',x_best,'\nProcessing time:',(t_total),'s\n')
     
-    return({'best_result':best_result,'acumulate_result':best_result_acum,'x_best':x_best,'t_total':t_total})
+    return({'best_result':best_result,'acumulate_result':best_result_acum,'x_best':x_best,'t_total':t_total,'max_n_iteration':i})

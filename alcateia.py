@@ -10,7 +10,7 @@ from functions import constraints #constraint function(s)
 def alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only):
     x = delta = np.zeros((n_variables,n_particles), dtype=float) #preallocation
     results = np.ones((n_particles)) #preallocation
-    best_result_acum = np.zeros((n_iterations)) #preallocation
+    best_result_acum = np.empty((n_iterations)) #preallocation
 
     r = radom_generator(n_variables,n_particles,a,b)
     x_0 = (radom_generator(n_variables,n_particles,a,b)) #postion matrix
@@ -45,4 +45,4 @@ def alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only):
 
     print('#Alcateia\nThe best result is:',best_result,'\nLocated at:',x_best,'\nProcessing time:',(t_total),'s\n')
 
-    return({'best_result':best_result,'acumulate_result':best_result_acum,'x_best':x_best,'t_total':t_total})
+    return({'best_result':best_result,'acumulate_result':best_result_acum,'x_best':x_best,'t_total':t_total,'max_n_iteration':i})
