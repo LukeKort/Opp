@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="icons_images">
+    <file>icons/edit_function_icon.png</file>
+    <file>icons/start_button.png</file>
+    <file>icons/help_button.png</file>
+  </qresource>
+</RCC>
