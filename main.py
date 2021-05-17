@@ -6,8 +6,6 @@ from PyQt5 import QtGui, QtCore, QtWidgets
 import opp_gui
 from plotter_export_csv import plotter
 from plotter_export_csv import export_csv
-from functions import constraints
-from functions import objective
 
 #Parameters
 methods=['n','n','n'] #methods to be processed - start with none
@@ -19,10 +17,15 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self) 
         #so, when you say self.ui.myButton ,that is pushButton in testUI that has name myButton 
         self.ui.play_button.clicked.connect(self.run_methods)# connect button clicked with action
-        #self.ui.edit_function_button.clicked.connect(self.open_function)
+        self.ui.edit_function_button.clicked.connect(self.open_function)
         self.ui.alcateia.toggled.connect(self.alcateia_check)
         self.ui.pso.toggled.connect(self.pso_check)
         self.ui.jaakola.toggled.connect(self.lj_check)
+
+    def open_function(self): #opens objective e constraints functions to user's edit
+        import os
+        fileName = 'functions.py'
+        os.system("notepad.exe " + fileName)
     
     def alcateia_check(self):
         methods[0]='y'
@@ -34,6 +37,9 @@ class MainWindow(QtWidgets.QMainWindow):
         methods[2]='y'
     
     def run_methods(self): #run the methods
+
+        from functions import constraints
+        from functions import objective
 
         n_particles = 100
         a= [-10,-10] #limit inferior per variable (must be a list)
