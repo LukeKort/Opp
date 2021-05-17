@@ -265,11 +265,11 @@ class Ui_MainWindow(object):
 import icon_rc
 
 #I had to add this manually from https://stackoverflow.com/questions/45043904/pyqt5-gui-runs-with-no-errors-but-window-doesnt-appear
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    w = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(w)
-    w.show()
-    sys.exit(app.exec_())
+# if __name__ == "__main__":
+#     import sys
+#     app = QtWidgets.QApplication(sys.argv)
+#     w = QtWidgets.QMainWindow()
+#     ui = Ui_MainWindow()
+#     ui.setupUi(w)
+#     w.show()
+#     sys.exit(app.exec_())
