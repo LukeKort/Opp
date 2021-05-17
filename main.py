@@ -2,6 +2,7 @@
 
 import numpy as np
 import sys
+import os
 from PyQt5 import QtGui, QtCore, QtWidgets
 import opp_gui
 from plotter_export_csv import plotter
@@ -14,19 +15,24 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.ui = opp_gui.Ui_MainWindow() # in this and next line you say that you will use all widgets from testUI over self.ui
-        self.ui.setupUi(self) 
+        self.ui.setupUi(self)
+        self.setWindowTitle('Opp Betha') #set windows title Opp [--v]
         #so, when you say self.ui.myButton ,that is pushButton in testUI that has name myButton 
         self.ui.play_button.clicked.connect(self.run_methods)# connect button clicked with action
         self.ui.edit_function_button.clicked.connect(self.open_function)
+        self.ui.help_button.clicked.connect(self.open_help)
         self.ui.alcateia.toggled.connect(self.alcateia_check)
         self.ui.pso.toggled.connect(self.pso_check)
         self.ui.jaakola.toggled.connect(self.lj_check)
 
     def open_function(self): #opens objective e constraints functions to user's edit
-        import os
         fileName = 'functions.py'
-        os.system("notepad.exe " + fileName)
+        os.system("notepad.exe " + fileName) #open in especific programm
     
+    def open_help(self): #opens help documentation
+        fileName = 'help_file.pdf'
+        os.system("start " + fileName) #open in default program
+
     def alcateia_check(self):
         methods[0]='y'
 
