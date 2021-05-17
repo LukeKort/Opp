@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1154</width>
+    <width>1171</width>
     <height>666</height>
    </rect>
   </property>
@@ -49,7 +49,7 @@
    <widget class="QPushButton" name="help_button">
     <property name="geometry">
      <rect>
-      <x>1090</x>
+      <x>1110</x>
       <y>10</y>
       <width>51</width>
       <height>51</height>
@@ -65,7 +65,7 @@
    <widget class="QTextEdit" name="console">
     <property name="geometry">
      <rect>
-      <x>760</x>
+      <x>780</x>
       <y>70</y>
       <width>371</width>
       <height>421</height>
@@ -78,7 +78,7 @@
    <widget class="QPushButton" name="edit_function_button">
     <property name="geometry">
      <rect>
-      <x>770</x>
+      <x>790</x>
       <y>530</y>
       <width>191</width>
       <height>91</height>
@@ -98,7 +98,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
    <widget class="QPushButton" name="play_button">
     <property name="geometry">
      <rect>
-      <x>1010</x>
+      <x>1030</x>
       <y>520</y>
       <width>111</width>
       <height>101</height>
@@ -251,11 +251,17 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>310</x>
+      <x>290</x>
       <y>100</y>
-      <width>411</width>
+      <width>471</width>
       <height>492</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>49</height>
+     </size>
     </property>
     <property name="font">
      <font>
@@ -356,12 +362,30 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <family>Calibri</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Jaakola - c, inner cicle</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QLineEdit" name="n_iterations">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>49</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>18</pointsize>
@@ -369,11 +393,23 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="n_particles">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>49</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>18</pointsize>
@@ -381,11 +417,23 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="n_tolerance">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>49</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>18</pointsize>
@@ -393,11 +441,23 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="vector_inf_limit">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>49</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>18</pointsize>
@@ -405,11 +465,23 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="vector_sup_limit">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>49</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>18</pointsize>
@@ -417,11 +489,23 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="vector_alcateia_only">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>49</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>18</pointsize>
@@ -429,11 +513,23 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>0,0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="vector_pso_only">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>49</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>18</pointsize>
@@ -441,6 +537,28 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
          </property>
          <property name="styleSheet">
           <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>0,0,0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="vector_lj_only">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>49</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>0,1</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -454,7 +572,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1154</width>
+     <width>1171</width>
      <height>31</height>
     </rect>
    </property>

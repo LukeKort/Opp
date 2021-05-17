@@ -47,15 +47,15 @@ class MainWindow(QtWidgets.QMainWindow):
         from functions import constraints
         from functions import objective
 
-        n_particles = 100
-        a= [-10,-10] #limit inferior per variable (must be a list)
-        b= [0, 0] #limit superior per variable (must be a list)
+        n_iterations = int(self.ui.n_iterations.text())
+        n_particles = int(self.ui.n_particles.text())
+        tolerance = float(self.ui.n_tolerance.text())
+        a = list(map(int,(self.ui.vector_inf_limit.text().split(',')))) #limit inferior per variable (must be a list)
+        b= list(map(int,(self.ui.vector_sup_limit.text().split(',')))) #limit superior per variable (must be a list)
         n_variables = np.size(a) #number of variables = number of constraints
-        n_iterations = 100
-        pso_only=[0.5,2,2] #[w,c1,c2] - for PSO only
-        alcateia_only = [20,0.7] #[internal cicles, idependency] - for alcateia only
-        lj_only = [500,0.005] #[internal cicles,contraction factor(0,1)] - for alcateia only
-        tolerance = 0
+        pso_only=list(map(float,(self.ui.vector_pso_only.text().split(',')))) #[w,c1,c2] - for alcateia only
+        alcateia_only = list(map(float,(self.ui.vector_alcateia_only.text().split(',')))) #[internal cicles, idependency] - for alcateia only
+        lj_only = list(map(float,(self.ui.vector_lj_only.text().split(',')))) #[internal cicles,contraction factor(0,1)] - for alcateia only
 
         try: #check for erros in objective, constraints functions
             teste_var = np.ones((n_variables,1))
@@ -94,10 +94,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         plotter(n_iterations,last_iteration,result_table,n_methods,methods_name)
         export_csv(result_table,methods_name,n_iterations)
-    
-    #def open_function(self):
-        
-        
+            
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = MainWindow()
