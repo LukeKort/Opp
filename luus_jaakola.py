@@ -1,4 +1,4 @@
-# Luus Jaakola (May. 12, 2021)
+# Luus Jaakola (May. 18, 2021)
 
 import time
 import numpy as np
@@ -16,7 +16,7 @@ def lj(n_variables,n_iterations,tolerance,a,b,lj_only):
 
     for i in range(n_iterations): #external cicle
         x_aux = x_0.copy()
-        for j in range(lj_only[0]): #internal cicle
+        for j in range(int(lj_only[0])): #internal cicle
             x[:,0]=x_0[:,0]+(2*rand.random()-1)*r[:,0] #particle update
             if (constraints(x[:,0])) is True: #teste within the constraints functions
                 if (objective(x[:,0])) < objective(x_0[:,0]): #teste particle update

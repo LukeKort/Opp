@@ -1,4 +1,4 @@
-# Main (May. 12, 2021)
+# Main (May. 18, 2021)
 
 import numpy as np
 import sys
@@ -10,6 +10,11 @@ from plotter_export_csv import export_csv
 
 #Parameters
 methods=['n','n','n'] #methods to be processed - start with none
+
+class EmittingStream(QtCore.QObject): #print to consele QLineEdit
+    textWritten = QtCore.pyqtSignal(str)
+    def write(self, text):
+        self.textWritten.emit(str(text))
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -24,6 +29,22 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.alcateia.toggled.connect(self.alcateia_check)
         self.ui.pso.toggled.connect(self.pso_check)
         self.ui.jaakola.toggled.connect(self.lj_check)
+
+        # Install the custom output stream
+        sys.stdout = EmittingStream(textWritten=self.normalOutputWritten)
+
+    def __del__(self): #print to consele QLineEdit
+        # Restore sys.stdout
+        sys.stdout = sys.__stdout__
+
+    def normalOutputWritten(self, text): #print to consele QLineEdit
+        """Append text to the QTextEdit."""
+        # Maybe QTextEdit.append() works as well, but this is how I do it:
+        cursor = self.ui.console.textCursor()
+        cursor.movePosition(QtGui.QTextCursor.End)
+        cursor.insertText(text)
+        self.ui.console.setTextCursor(cursor)
+        self.ui.console.ensureCursorVisible()
 
     def open_function(self): #opens objective e constraints functions to user's edit
         fileName = 'functions.py'

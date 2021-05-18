@@ -1,4 +1,4 @@
-# Alcateia (May. 12, 2021)
+# Alcateia (May. 18, 2021)
 
 import time
 import numpy as np
@@ -19,7 +19,7 @@ def alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only):
 
     for i in range(n_iterations): #external cicle
         x_aux = x_0.copy()
-        for j in range(alcateia_only[0]): #internal cicle
+        for j in range(int(alcateia_only[0])): #internal cicle
             for k in range(n_particles): #calculos per particle
                 delta[:,k]=(-1+2*rand.random())*r[:,k]
                 x[:,k]=x_0[:,k]+delta[:,k] #particle update

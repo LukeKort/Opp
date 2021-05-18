@@ -65,9 +65,9 @@
    <widget class="QTextEdit" name="console">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>790</x>
       <y>70</y>
-      <width>371</width>
+      <width>361</width>
       <height>421</height>
      </rect>
     </property>
@@ -251,9 +251,9 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>280</x>
       <y>100</y>
-      <width>471</width>
+      <width>491</width>
       <height>492</height>
      </rect>
     </property>
@@ -345,7 +345,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
           </font>
          </property>
          <property name="text">
-          <string>Alcateia - cicles, id</string>
+          <string>Alcateia - inner cicles, id</string>
          </property>
         </widget>
        </item>
@@ -370,7 +370,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
           </font>
          </property>
          <property name="text">
-          <string>Jaakola - c, inner cicle</string>
+          <string>Jaakola - inner cicle, c</string>
          </property>
         </widget>
        </item>
