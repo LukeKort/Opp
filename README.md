@@ -9,7 +9,8 @@ O Opp funciona como uma plataforma de otimização, permitindo o acesso a divers
 - Facilidade em exportar resultados, com caixa de diálogo
 - Facilidade em comparar diferentes métodos de otimização, com gráficos de resultados
 - Fast-start para implementação de novos métodos de otimização, com guia rápido
-- Funções multiobjetivo por hiper parâmetro, sem adição de código
+- Funções multiobjetivo por hiper parâmetro, sem a necessidade de adição de código
+- Open source e totalmente gratuito
 
 ## Estrutura
 
