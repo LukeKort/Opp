@@ -16,7 +16,7 @@ def constraints(var): #constraint functions
     y1 = (x1+5)**2 + (x2+5)**2 #constraint functions 1 to n
     y2 = 0
 
-    if (y1 <= 0) and (y2 == 0): #test conditions 1 to n
+    if (y1 <= 25) and (y2 == 0): #test conditions 1 to n
         return True #all conditions has been met
     else:
         return False #one or more condition hasn't been met

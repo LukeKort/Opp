@@ -68,7 +68,7 @@
       <x>790</x>
       <y>70</y>
       <width>361</width>
-      <height>421</height>
+      <height>401</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -319,7 +319,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
           </font>
          </property>
          <property name="text">
-          <string>Inf. limit</string>
+          <string>Inf. limit - x,..,z</string>
          </property>
         </widget>
        </item>
@@ -332,7 +332,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
           </font>
          </property>
          <property name="text">
-          <string>Sup. limit</string>
+          <string>Sup. limit - x,...,z</string>
          </property>
         </widget>
        </item>
@@ -515,7 +515,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
           <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
-          <string>0,0</string>
+          <string>1,0</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -555,7 +555,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
           </size>
          </property>
          <property name="text">
-          <string>0,1</string>
+          <string>1,0</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -565,6 +565,25 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QCheckBox" name="export_results_cvs">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>480</y>
+      <width>241</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Save results to a CSV file</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

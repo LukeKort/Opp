@@ -1,5 +1,7 @@
-# Main (May. 18, 2021)
+# Main (May. 21, 2021)
 
+from time import time
+from datetime import datetime
 import numpy as np
 import sys
 import os
@@ -21,7 +23,7 @@ class MainWindow(QtWidgets.QMainWindow):
         super(MainWindow, self).__init__()
         self.ui = opp_gui.Ui_MainWindow() # in this and next line you say that you will use all widgets from testUI over self.ui
         self.ui.setupUi(self)
-        self.setWindowTitle('Opp Betha') #set windows title Opp [--v]
+        self.setWindowTitle('Opp RC') #set windows title Opp [--v]
         #so, when you say self.ui.myButton ,that is pushButton in testUI that has name myButton 
         self.ui.play_button.clicked.connect(self.run_methods)# connect button clicked with action
         self.ui.edit_function_button.clicked.connect(self.open_function)
@@ -29,6 +31,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.alcateia.toggled.connect(self.alcateia_check)
         self.ui.pso.toggled.connect(self.pso_check)
         self.ui.jaakola.toggled.connect(self.lj_check)
+        #self.ui.export_results_cvs.toggled.connect(self.export_check)
 
         # Install the custom output stream
         sys.stdout = EmittingStream(textWritten=self.normalOutputWritten)
@@ -45,7 +48,7 @@ class MainWindow(QtWidgets.QMainWindow):
         cursor.insertText(text)
         self.ui.console.setTextCursor(cursor)
         self.ui.console.ensureCursorVisible()
-
+    
     def open_function(self): #opens objective e constraints functions to user's edit
         fileName = 'functions.py'
         os.system("notepad.exe " + fileName) #open in especific programm
@@ -55,14 +58,25 @@ class MainWindow(QtWidgets.QMainWindow):
         os.system("start " + fileName) #open in default program
 
     def alcateia_check(self):
-        methods[0]='y'
+        if self.ui.alcateia.isChecked():   
+            methods[0]='y'
+        else:
+            methods[0]='n'
 
     def pso_check(self):
-        methods[1]='y'
+        if self.ui.pso.isChecked():   
+            methods[1]='y'
+        else:
+            methods[1]='n'
     
     def lj_check(self):
-        methods[2]='y'
+        if self.ui.jaakola.isChecked():   
+            methods[2]='y'
+        else:
+            methods[2]='n'
     
+    ex_count = 1 #count the number of executions
+
     def run_methods(self): #run the methods
 
         from functions import constraints
@@ -78,18 +92,25 @@ class MainWindow(QtWidgets.QMainWindow):
         alcateia_only = list(map(float,(self.ui.vector_alcateia_only.text().split(',')))) #[internal cicles, idependency] - for alcateia only
         lj_only = list(map(float,(self.ui.vector_lj_only.text().split(',')))) #[internal cicles,contraction factor(0,1)] - for alcateia only
 
+        if np.size(a) != np.size(b): #check for erros in a and b
+            print('Inferior limit and superior limit have differente size!\n')
+            return
+
         try: #check for erros in objective, constraints functions
             teste_var = np.ones((n_variables,1))
             constraints(teste_var)
             objective(teste_var)
         except:
-            sys.exit('Function not correctly inputted\n')
+            print('Function or limits not correctly inputted\n')
+            return
 
         n_methods=methods.count('y')
         result_table=np.zeros((n_iterations,n_methods))
         last_iteration=np.zeros(n_methods) #consider early end of method's processing by tolerance
         i=0
         methods_name=[]
+
+        print(datetime.now().strftime("%H:%M:%S"),"\n")
 
         if methods[0].lower() == 'y':
             from alcateia import alcateia
@@ -114,7 +135,10 @@ class MainWindow(QtWidgets.QMainWindow):
             i=i+1
 
         plotter(n_iterations,last_iteration,result_table,n_methods,methods_name)
-        export_csv(result_table,methods_name,n_iterations)
+        
+        if self.ui.export_results_cvs.isChecked():
+            export_csv(result_table,methods_name,n_iterations)
+            
             
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

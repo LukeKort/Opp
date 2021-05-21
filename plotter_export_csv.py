@@ -1,8 +1,9 @@
-# Plotter charts and export to CVS files (May. 12, 2021)
+# Plotter charts and export to CVS files (May. 21, 2021)
 
 import matplotlib.pyplot as plt
 import pandas as pd
-from tkinter import filedialog
+import tkinter as tk #hide tk window
+from tkinter import filedialog #get a file dialog window
 from mpl_toolkits.axisartist.axislines import Axes
 
 def plotter(x_limit,last_iteration,y_var,n_methods,name):
@@ -22,6 +23,8 @@ def plotter(x_limit,last_iteration,y_var,n_methods,name):
 
 def export_csv(table,header,index_col):
     df_results=pd.DataFrame(table,index=range(index_col),columns=header)
+    root = tk.Tk()
+    root.withdraw()
     export_file_path = filedialog.asksaveasfilename(defaultextension='.csv')
     try:
         df_results.to_csv(export_file_path)
