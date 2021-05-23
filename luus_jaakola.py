@@ -1,13 +1,18 @@
-# Luus Jaakola (May. 18, 2021)
+# Luus Jaakola (May. 23, 2021)
 
 import time
 import numpy as np
 import random as rand
-from random_matrix import radom_generator #random generator. takes x and y vector dimentions between the limits a and b
-from functions import objective #objetive function(s)
-from functions import constraints #constraint function(s)
+from importlib import reload #to reload a previuly loaded file
 
 def lj(n_variables,n_iterations,tolerance,a,b,lj_only):
+
+    from random_matrix import radom_generator #random generator. takes x and y vector dimentions between the limits a and b
+    import functions
+    reload(functions)  #uptade the changes made in the function file
+    from functions import objective #objetive function(s)
+    from functions import constraints #constraint function(s)
+
     best_result_acum = np.empty((n_iterations)) #preallocation
     x_0 = (radom_generator(n_variables,1,a,b)) #postion matrix
     x = r= np.ones((n_variables,1))

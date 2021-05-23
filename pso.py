@@ -1,13 +1,18 @@
-# Particle Swarm (May. 12, 2021)
+# Particle Swarm (May. 23, 2021)
 
 import time
 import numpy as np
 import random as rand
-from random_matrix import radom_generator #random generator. takes x and y vector dimentions between the limits a and b
-from functions import objective #objetive function(s)
-from functions import constraints #constraint function(s)
+from importlib import reload #to reload a previuly loaded file
 
 def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only):
+
+    from random_matrix import radom_generator #random generator. takes x and y vector dimentions between the limits a and b
+    import functions
+    reload(functions)  #uptade the changes made in the function file
+    from functions import objective #objetive function(s)
+    from functions import constraints #constraint function(s)
+
     results = np.ones((n_particles)) #preallocation
     best_result_acum = np.empty((n_iterations)) #preallocation
     x_aux = x = np.zeros((n_variables, n_particles)) #x_aux stores the best value's position per particle/x is the first position matrix
@@ -23,9 +28,9 @@ def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only):
             x[:,j]=x_0[:,j]+v[:,j] #new position matrix
             for k in range(n_variables): #test with the limits (a,b)
                 if x[k,j]<a[k]:
-                    x[k,j]=rand.randrange(a[k],b[k])
+                    x[k,j]=a[k]+(b[k]-a[k])*rand.random()
                 if x[k,j]>b[k]:
-                    x[k,j]=rand.randrange(a[k],b[k])
+                    x[k,j]=a[k]+(b[k]-a[k])*rand.random()
             if (constraints(x[:,j])) is True: #teste the new x within the constraints functions
                 if (objective(x[:,j])) < objective(x_aux[:,j]): #teste the new x within the objetive function
                     x_aux[:,j] = x[:,j] #setting new best particle position

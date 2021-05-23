@@ -1,13 +1,18 @@
-# Alcateia (May. 18, 2021)
+# Alcateia (May. 23, 2021)
 
 import time
 import numpy as np
 import random as rand
-from random_matrix import radom_generator #random generator. takes x and y vector dimentions between the limits a and b
-from functions import objective #objetive function(s)
-from functions import constraints #constraint function(s)
+from importlib import reload #to reload a previuly loaded file
 
 def alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only):
+
+    from random_matrix import radom_generator #random generator. takes x and y vector dimentions between the limits a and b
+    import functions
+    reload(functions)  #uptade the changes made in the function file
+    from functions import objective #objetive function(s)
+    from functions import constraints #constraint function(s)
+
     x = delta = np.zeros((n_variables,n_particles), dtype=float) #preallocation
     results = np.ones((n_particles)) #preallocation
     best_result_acum = np.empty((n_iterations)) #preallocation
