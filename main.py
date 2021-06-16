@@ -1,4 +1,4 @@
-# Main (May. 23, 2021)
+# Main (Jun. 16, 2021)
 
 from importlib import reload #to reload a previuly loaded file
 from time import time #to count time
@@ -96,13 +96,29 @@ class MainWindow(QtWidgets.QMainWindow):
         a = list(map(float,(self.ui.vector_inf_limit.text().split(',')))) #limit inferior per variable (must be a list)
         b= list(map(float,(self.ui.vector_sup_limit.text().split(',')))) #limit superior per variable (must be a list)
         n_variables = np.size(a) #number of variables = number of constraints
-        pso_only=list(map(float,(self.ui.vector_pso_only.text().split(',')))) #[w,c1,c2] - for alcateia only
-        alcateia_only = list(map(float,(self.ui.vector_alcateia_only.text().split(',')))) #[internal cicles, idependency] - for alcateia only
-        lj_only = list(map(float,(self.ui.vector_lj_only.text().split(',')))) #[internal cicles,contraction factor(0,1)] - for alcateia only
+        pso_only_w=float(self.ui.w_pso_only.text()) #w for alcateia only
+        pso_only_c1=float(self.ui.c1_pso_only.text()) #c1 for alcateia only
+        pso_only_c2=float(self.ui.c2_pso_only.text()) #c2 for alcateia only
+        alcateia_only_ic = int(self.ui.alcateia_inner_circle.text()) #internal cicles for alcateia only
+        alcateia_only_id = float(self.ui.alcatei_id.text()) #idependency for alcateia only
+        lj_only_in = int(self.ui.inner_circle_lj_only.text()) #internal for alcateia only
+        lj_only_c = float(self.ui.c_lj_only.text()) #contraction factor(0,1) for alcateia only
 
         
         if np.size(a) != np.size(b): #check for erros in a and b
             print('Inferior limit and superior limit have differente sizes!\n')
+            return
+
+        if alcateia_only_id < 0 or alcateia_only_id > 1: #check for erros in jaakola innercircles
+            print("Alcateias's 'id' must be between 0 and 1 \n")
+            return
+
+        if lj_only_c < 0 or lj_only_c > 1: #check for erros in jaakola innercircles
+            print("Jaakola's 'c' must be between 0 and 1 \n")
+            return
+
+        if n_iterations < 1 or n_particles < 1 or alcateia_only_ic < 1 or lj_only_in < 1: #check for erros in jaakola innercircles
+            print("Number of iterations, inner circles and particles must be greater than or equal to 1 \n")
             return
 
         try: #check for erros in objective, constraints functions
@@ -125,21 +141,21 @@ class MainWindow(QtWidgets.QMainWindow):
 
         if methods[0] == 'y':
             from alcateia import alcateia
-            alcateia_results=alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only) #activate de alcateia method
+            alcateia_results=alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only_ic,alcateia_only_id) #activate de alcateia method
             result_table[:,i] = alcateia_results['acumulate_result']
             last_iteration[i] = alcateia_results['max_n_iteration']
             methods_name.append('Alcateia')
             i=i+1
         if methods[1] == 'y':
             from pso import pso
-            pso_results=pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only) #activate de alcateia method
+            pso_results=pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only_w,pso_only_c1,pso_only_c2) #activate de alcateia method
             result_table[:,i] = pso_results['acumulate_result']
             last_iteration[i] = pso_results['max_n_iteration']
             methods_name.append('Particle Swarm')
             i=i+1
         if methods[2] == 'y':
             from luus_jaakola import lj
-            lj_results=lj(n_variables,n_iterations,tolerance,a,b,lj_only) #activate de alcateia method
+            lj_results=lj(n_variables,n_iterations,tolerance,a,b,lj_only_in, lj_only_c) #activate de alcateia method
             result_table[:,i] = lj_results['acumulate_result']
             last_iteration[i] = lj_results['max_n_iteration']
             methods_name.append('Luus Jaakola')

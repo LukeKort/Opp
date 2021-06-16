@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons_images">
+    <file>icons/opp.png</file>
     <file>icons/opp_icon.png</file>
     <file>icons/edit_function_icon.png</file>
     <file>icons/start_button.png</file>

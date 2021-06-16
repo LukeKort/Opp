@@ -1,11 +1,11 @@
-# Alcateia (May. 23, 2021)
+# Alcateia (Jun. 16, 2021)
 
 import time
 import numpy as np
 import random as rand
 from importlib import reload #to reload a previuly loaded file
 
-def alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only):
+def alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only_ic,alcateia_only_id):
 
     from random_matrix import radom_generator #random generator. takes x and y vector dimentions between the limits a and b
     import functions
@@ -24,7 +24,7 @@ def alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only):
 
     for i in range(n_iterations): #external cicle
         x_aux = x_0.copy()
-        for j in range(int(alcateia_only[0])): #internal cicle
+        for j in range(alcateia_only_ic): #internal cicle
             for k in range(n_particles): #calculos per particle
                 delta[:,k]=(-1+2*rand.random())*r[:,k]
                 x[:,k]=x_0[:,k]+delta[:,k] #particle update
@@ -39,7 +39,7 @@ def alcateia(n_particles,n_variables,n_iterations,tolerance,a,b,alcateia_only):
 
         for w in range(n_particles): #uptade x_0 within the best result of last external cicle
             r[:,w] = abs(x_0[:,w] - x[:,w])
-            x_0[:,w] = alcateia_only[1]*x_0[:,w]+(1-alcateia_only[1])*x_best
+            x_0[:,w] = alcateia_only_id*x_0[:,w]+(1-alcateia_only_id)*x_best
         
         if tolerance >= np.amax(r): #break for setting tolerance
             #best_result_acum[:,i:n_iterations]=best_result #comple the rest of the vector with the last value

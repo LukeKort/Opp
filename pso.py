@@ -1,11 +1,11 @@
-# Particle Swarm (May. 23, 2021)
+# Particle Swarm (Jun. 16, 2021)
 
 import time
 import numpy as np
 import random as rand
 from importlib import reload #to reload a previuly loaded file
 
-def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only):
+def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only_w,pso_only_c1,pso_only_c2):
 
     from random_matrix import radom_generator #random generator. takes x and y vector dimentions between the limits a and b
     import functions
@@ -24,7 +24,7 @@ def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only):
     for i in range(n_iterations):  
         x_0=x.copy() #stores the last x before uptade
         for j in range(n_particles):
-            v[:,j]= pso_only[0]*v[:,j] + rand.random()*pso_only[1]*(x_aux[:,j]-x[:,j]) + rand.random()*pso_only[2]*(x_best - x[:,j]) #new velocity matrix
+            v[:,j]= pso_only_w*v[:,j] + rand.random()*pso_only_c1*(x_aux[:,j]-x[:,j]) + rand.random()*pso_only_c2*(x_best - x[:,j]) #new velocity matrix
             x[:,j]=x_0[:,j]+v[:,j] #new position matrix
             for k in range(n_variables): #test with the limits (a,b)
                 if x[k,j]<a[k]:
