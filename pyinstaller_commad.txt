@@ -1,0 +1,1 @@
+pyinstaller --name="Opp" --onefile --add-data="functions.py;." --icon=icons\opp_icon.ico main.py
