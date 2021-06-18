@@ -1,1 +1,1 @@
-pyinstaller --name="Opp" --onefile --add-data="functions.py;." --icon=icons\opp_icon.ico main.py
+pyinstaller --name="Opp" --noconsole --add-data "functions.py; help_file.pdf" --icon=icons\opp_icon.ico main.py
