@@ -12,6 +12,10 @@ O Opp funciona como uma plataforma de otimização, permitindo o acesso a divers
 - Funções multiobjetivo por hiper parâmetro, sem a necessidade de adição de código
 - Open source e totalmente gratuito
 
+## Opp roadmap
+-	No inverno de 2021, mais 6 métodos de otimização serão adicionados ao Opp
+-	Estamos desenvolvendo a engine HibridX. Em breve não será mais necessário escolher um método. Baseado em Machine Learning, HibridX analisa a sua função objetiva e traça hibridizações de forma automática
+
 ## Estrutura
 
 ![estrutura_3](https://user-images.githubusercontent.com/64225460/117978638-7a6ce800-b308-11eb-860b-00deab94512f.png)
