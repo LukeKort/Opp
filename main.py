@@ -28,6 +28,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.play_button.clicked.connect(self.run_methods)# connect button clicked with action
         self.ui.edit_function_button.clicked.connect(self.open_function)
         self.ui.help_button.clicked.connect(self.open_help)
+        self.ui.youtube.clicked.connect(self.youtube)
         self.ui.alcateia.toggled.connect(self.alcateia_check)
         self.ui.pso.toggled.connect(self.pso_check)
         self.ui.jaakola.toggled.connect(self.lj_check)
@@ -52,6 +53,11 @@ class MainWindow(QtWidgets.QMainWindow):
     def open_function(self): #opens objective e constraints functions to user's edit
         fileName = 'functions.py'
         os.system("notepad.exe " + fileName) #open in especific programm
+    
+    def youtube(self): #opens help documentation
+        import webbrowser
+        url = 'https://youtu.be/Y79Re82K3W0'
+        os.startfile(url)
     
     def open_help(self): #opens help documentation
         fileName = 'help_file.pdf'

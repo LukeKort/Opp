@@ -700,7 +700,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
      <rect>
       <x>730</x>
       <y>110</y>
-      <width>171</width>
+      <width>191</width>
       <height>491</height>
      </rect>
     </property>
@@ -1114,6 +1114,22 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="youtube">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>0</y>
+      <width>81</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/icons_images/icons/youtube.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
