@@ -550,7 +550,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
      <rect>
       <x>50</x>
       <y>180</y>
-      <width>201</width>
+      <width>241</width>
       <height>431</height>
      </rect>
     </property>
@@ -630,50 +630,6 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QRadioButton" name="grad_desc_stoc">
-       <property name="font">
-        <font>
-         <family>Calibri</family>
-         <pointsize>18</pointsize>
-        </font>
-       </property>
-       <property name="acceptDrops">
-        <bool>false</bool>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
-       </property>
-       <property name="text">
-        <string>GDS</string>
-       </property>
-       <property name="autoExclusive">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="pca">
-       <property name="font">
-        <font>
-         <family>Calibri</family>
-         <pointsize>18</pointsize>
-        </font>
-       </property>
-       <property name="acceptDrops">
-        <bool>false</bool>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
-       </property>
-       <property name="text">
-        <string>PCA</string>
-       </property>
-       <property name="autoExclusive">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
    <widget class="QCheckBox" name="export_results_cvs">
@@ -700,7 +656,7 @@ border-image: url(:/icons_images/icons/edit_function_icon.png);</string>
      <rect>
       <x>730</x>
       <y>110</y>
-      <width>191</width>
+      <width>211</width>
       <height>491</height>
      </rect>
     </property>
