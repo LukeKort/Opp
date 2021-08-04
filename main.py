@@ -52,7 +52,7 @@ class MainWindow(QtWidgets.QMainWindow):
     
     def open_function(self): #opens objective e constraints functions to user's edit
         fileName = 'functions.py'
-        os.system("notepad.exe " + fileName) #open in especific programm
+        os.system("start " + fileName) #open in default programm
     
     def youtube(self): #opens help documentation
         import webbrowser
@@ -91,7 +91,7 @@ class MainWindow(QtWidgets.QMainWindow):
             import functions
             reload(functions)  #uptade the changes made in the function file
         except:
-            print('Looks like the inputted functions have a problem.\n')
+            print('Looks like the inputted functions has a problem.\n')
             return
         from functions import constraints
         from functions import objective

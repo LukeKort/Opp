@@ -1,24 +1,52 @@
 # Objectives and constraints functions (May. 05, 2021)
 import math
+import numpy as np
 
-def objective(var): #objetive functions
+# from numpy.cor_t.fromnumeric import around
+
+def objective(t): #objetive functions
+
+    #confiabilidade
+
+    gamma_ = 3.000122547
+    theta = 30.63657894
+
+    r_t = math.exp(-((int(math.floor(t))/theta)**(gamma_)))
+        
+    #custo
+
+    c_m = 1000
+    c_r = 2500
+    c_inc = 10000
+    t_ser = 87600
+    mttf = 27.8067216
+
+    c_t = int(math.floor((t_ser/t)))*c_m*r_t + int(math.floor((t_ser)/mttf))*(c_r+c_inc)*(1-r_t) 
     
-    x1 = var[0]
-    x2 = var[1]
+    #função objetivo
 
-    y = 
+    y = c_t
 
+    return y
 
-    return y #result
+def constraints(t): #constraint functions
 
-def constraints(var): #constraint functions
-    x1=var[0] #variables 1 to n
-    x2=var[1]
+    #confiabilidade
+    
+    gamma_ = 3.000122547
+    theta = 30.63657894
 
-    y1 = 0 #constraint functions 1 to n
-    y2 = 0
+    r_t = math.exp(-((int(math.floor(t))/theta)**(gamma_)))
 
-    if (y1  == 0) and (y2 == 0): #test conditions 1 to n
+    #disponibilidade
+
+    # t_m = 4       #tempo de r_tparo
+    # t_r = 20      #tempo de manutenção
+
+    # a_t = int(math.floor(t))/(int(math.floor(t)) + r_t*t_m + (1-r_t)*t_r)
+    
+    #constraint functions 1 to n
+    if (r_t >= 0.95): #test conditions 1 to n
         return True #all conditions has been met
     else:
-        return False #one or more condition hasn't been met
+        return False #one or mor_t condition hasn't been met

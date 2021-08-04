@@ -1,4 +1,4 @@
-# Particle Swarm (Jun. 16, 2021)
+# Particle Swarm (Aug. 04, 2021)
 
 import time
 import numpy as np
@@ -13,11 +13,13 @@ def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only_w,pso_only_c
     from functions import objective #objetive function(s)
     from functions import constraints #constraint function(s)
 
-    results = np.ones((n_particles)) #preallocation
     best_result_acum = np.empty((n_iterations)) #preallocation
-    x_aux = x = np.zeros((n_variables, n_particles)) #x_aux stores the best value's position per particle/x is the first position matrix
     v = radom_generator(n_variables,n_particles,a,b) #velocity matrix
+    x_aux = radom_generator(n_variables,n_particles,a,b)
+    x = radom_generator(n_variables,n_particles,a,b)
     x_best = np.zeros((n_variables))
+
+    cc = 1 #controler counter
 
     t_0 = time.time() #start time
 
@@ -33,18 +35,25 @@ def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only_w,pso_only_c
                     x[k,j]=a[k]+(b[k]-a[k])*rand.random()
             if (constraints(x[:,j])) is True: #teste the new x within the constraints functions
                 if (objective(x[:,j])) < objective(x_aux[:,j]): #teste the new x within the objetive function
-                    x_aux[:,j] = x[:,j] #setting new best particle position
-            results[j] = objective(x_aux[:,j]) #save result per particle
-        best_result = min(results) #find best result of all particles
-        best_result_acum[i] = best_result
-        idx = results.tolist().index(best_result) #find the best result's index inside the results vector
-        x_best = x_aux[:,idx] #find the best result's position
+                    x_aux[:,j] = x[:,j].copy() #setting new best particle position
+                if cc ==1:
+                    results = np.full(n_particles,objective(x_aux[:,j])) #the 1st best value will fill the results vector
+                    cc += 1
+                else:    
+                    results[j] = objective(x_aux[:,j]) #save result per particle
+                best_result = min(results) #find best result of all particles
+                best_result_acum[i] = best_result
+                idx = results.tolist().index(best_result) #find the best result's index inside the results vector
+                x_best = x_aux[:,idx] #find the best result's position
         
         if tolerance >= np.amax(abs(x-x_0)): #break for setting tolerance
             break
 
     t_end = time.time() #finish time
     t_total = t_end - t_0 #total processing time
+
+    if cc == 1:
+        best_result = x_best = 'Not found!' #if the problem can't be solved, rise the messange
 
     print('#Particle Swarm\nThe best result is:',best_result,'\nLocated at:',x_best,'\nProcessing time:',(t_total),'s\n')
     
