@@ -36,15 +36,18 @@ def pso(n_particles,n_variables,n_iterations,tolerance,a,b,pso_only_w,pso_only_c
             if (constraints(x[:,j])) is True: #teste the new x within the constraints functions
                 if (objective(x[:,j])) < objective(x_aux[:,j]): #teste the new x within the objetive function
                     x_aux[:,j] = x[:,j].copy() #setting new best particle position
-                if cc ==1:
-                    results = np.full(n_particles,objective(x_aux[:,j])) #the 1st best value will fill the results vector
-                    cc += 1
-                else:    
-                    results[j] = objective(x_aux[:,j]) #save result per particle
-                best_result = min(results) #find best result of all particles
-                best_result_acum[i] = best_result
-                idx = results.tolist().index(best_result) #find the best result's index inside the results vector
-                x_best = x_aux[:,idx] #find the best result's position
+                    
+                    if cc == 1:
+                        results = np.full(n_particles,objective(x_aux[:,j])) #the 1st best value will fill the results vector
+                        best_result_acum = np.full(n_iterations,objective(x_aux[:,j]))
+                        cc += 1
+                    else:    
+                        results[j] = objective(x_aux[:,j]) #save result per particle
+                    
+                    best_result = min(results).copy() #find best result of all particles
+                    best_result_acum[i] = best_result.copy()
+                    idx = results.tolist().index(best_result) #find the best result's index inside the results vector
+                    x_best = x_aux[:,idx] #find the best result's position
         
         if tolerance >= np.amax(abs(x-x_0)): #break for setting tolerance
             break
